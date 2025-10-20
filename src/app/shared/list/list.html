@@ -1,0 +1,17 @@
+<div class="mb-3">
+  <!--<label for="item" class="col-2 col-form-label">{{ textLabel }}</label>-->
+  <select id="item" class="form-select form-select-sm"
+          [ngModel]="itemSeleccionado"
+          (ngModelChange)="enviarItemSeleccionado($event)"
+          name="item">
+    <option value=""> Seleccione {{textLabel}}</option>
+    @for (it of items; track it) {
+      <option [value]="it">
+        {{ it }}
+      </option>a
+    }
+    @empty {
+      <option value="" disabled>No hay items disponibles</option>
+    }
+  </select>
+</div>

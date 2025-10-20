@@ -1,1 +1,58 @@
-<p>libro works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Libro</h1>
+      <div>
+      @if (!submitted){
+        <form (ngSubmit)="enviarLibro(libroForm)" #libroForm="ngForm">
+          <div class="mb-3">
+            <input type="text" class="form-control form-control-sm" id="nombre" placeholder="Título libro" required
+                   minlength="1" maxlength="10"
+                   [(ngModel)]="libro.nombre" name="nombre" #nombreForm="ngModel"
+                   [class.is-invalid]="nombreForm.invalid && nombreForm.touched">
+            @if (nombreForm.invalid && nombreForm.touched){
+              <small class="form-text text-danger">Nombre es requerido</small>
+            }
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control form-control-sm" id="autor" placeholder="Autor" required
+                   minlength="1" maxlength="10"
+                   [(ngModel)]="libro.autor" name="autor" #autorForm="ngModel"
+                   [class.is-invalid]="autorForm.invalid && autorForm.touched">
+            @if (autorForm.invalid && autorForm.touched){
+              <small class="form-text text-danger">Autor es requerido</small>
+            }
+          </div>
+          <app-list
+            [textLabel]="textoEtiqueta"
+            [items]="itemsDisponibles"
+            [itemSeleccionado]="libro.categoria"
+            (eventEmitter)="onItemSelected($event)">
+          </app-list>
+
+          <div class="mb-3">
+            <input type="text" class="form-control form-control-sm" id="anio" placeholder="Año" required minlength="1"
+                   maxlength="4" pattern="^[1-9]{4}$"
+                   [(ngModel)]="libro.anio" name="anio" #anioForm="ngModel"
+                   [class.is-invalid]="anioForm.invalid && anioForm.touched">
+            @if (anioForm.invalid && anioForm.touched){
+            <small class="form-text text-danger">Año es requerido y debe tener cuatro dígitos</small>
+            }
+          </div>
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary" [disabled]="!libroForm.form.valid">Enviar</button>
+            <button type="button" class="btn btn-secondary" (click)="nuevoLibro()">Nuevo Libro</button>
+          </div>
+        </form>
+      } @else {
+        <app-libro-card
+          [titulo]="textoCardLibro"
+          [book]= "booke"
+          [submittedH]="submitted">
+        </app-libro-card>
+      }
+      </div>
+
+    </div>
+  </div>
+</div>
