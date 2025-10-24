@@ -32,14 +32,14 @@
 
           <div class="mb-3">
             <input type="text" class="form-control form-control-sm" id="anio" placeholder="Año" required minlength="1"
-                   maxlength="4" pattern="^[1-9]{4}$"
+                   maxlength="4" pattern="^[0-9]{4}$"
                    [(ngModel)]="libro.anio" name="anio" #anioForm="ngModel"
                    [class.is-invalid]="anioForm.invalid && anioForm.touched">
             @if (anioForm.invalid && anioForm.touched){
             <small class="form-text text-danger">Año es requerido y debe tener cuatro dígitos</small>
             }
           </div>
-          <div class="mb-3">
+          <div class="mb-3 d-grid gap-2 d-md-block">
             <button type="submit" class="btn btn-primary" [disabled]="!libroForm.form.valid">Enviar</button>
             <button type="button" class="btn btn-secondary" (click)="nuevoLibro()">Nuevo Libro</button>
           </div>

@@ -1,10 +1,12 @@
 export class LibroM {
-
   constructor(
-    public nombre: string
-    , public autor: string
-    , public imagen: string
-    , public categoria: string
-    , public anio: string
+    public id: number,
+    public nombre: string,
+    public autor: string,
+    public votos: number,
+    public imagen: string,
+    public url:string,
+    public categoria: string,
+    public anio: number
   ) { }
 }
