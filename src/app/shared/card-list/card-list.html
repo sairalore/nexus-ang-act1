@@ -2,10 +2,11 @@
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
     @for (item of libros; track item.id) {
       <div class="card h-100 shadow-sm">
-        <img [ngSrc]="item.imagen" width="200" height="100" class="card-img-top" [alt]="item.nombre">
+        <img [ngSrc]="item.imagen" width="300" height="200" class="card-img-top" [alt]="item.nombre" priority>
         <div class="card-body">
           <h5 class="card-title">{{ item.nombre }}</h5>
           <a href="#" class="btn btn-primary">Ver más</a>
+          <a class="btn btn-primary" routerLink ="/cart" (click)="enviarAgregarLibroCarrito(item)">Comprar</a>
         </div>
         <div class="card-footer">
           <small class="text-muted">{{ item.anio }}</small>

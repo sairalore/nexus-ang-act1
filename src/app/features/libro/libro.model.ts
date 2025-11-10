@@ -7,6 +7,7 @@ export class LibroM {
     public imagen: string,
     public url:string,
     public categoria: string,
-    public anio: number
+    public anio: number,
+    public precio: number,
   ) { }
 }
