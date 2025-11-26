@@ -1,9 +1,68 @@
-<div>
-  <p>contact works!</p>
-  <ul>
-    <li><a routerLink="/contact/mailing">Mailing</a></li>
-    <li><a routerLink="/contact/mapping">Mapping</a></li>
-  </ul>
-  <h4>Resultado</h4>
-  <router-outlet></router-outlet>
+<div class="contact-container">
+  <div class="container py-5">
+    <!-- Header -->
+    <div class="text-center mb-5">
+      <h1 class="display-4 fw-bold text-primary mb-3">Contáctanos</h1>
+      <p class="lead text-muted">Estamos aquí para ayudarte. Elige la mejor forma de comunicarte con nosotros.</p>
+    </div>
+
+    <!-- Tabs de navegación -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-8">
+        <ul class="nav nav-pills nav-fill gap-3 contact-tabs">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <i class="bi bi-envelope-fill me-2"></i>
+              Formulario de Contacto
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contact/mapping" routerLinkActive="active">
+              <i class="bi bi-geo-alt-fill me-2"></i>
+              Ubicación
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Contenido dinámico -->
+    <div class="contact-content">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- Información de contacto adicional -->
+    <div class="row mt-5 pt-5 border-top">
+      <div class="col-md-4 mb-4">
+        <div class="contact-info-card text-center">
+          <div class="icon-wrapper mb-3">
+            <i class="bi bi-telephone-fill"></i>
+          </div>
+          <h5 class="fw-bold">Teléfono</h5>
+          <p class="text-muted mb-0">912 34 56 78</p>
+          <p class="text-muted">Lun - Vie: 8:00 - 20:00</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="contact-info-card text-center">
+          <div class="icon-wrapper mb-3">
+            <i class="bi bi-envelope-fill"></i>
+          </div>
+          <h5 class="fw-bold">Email</h5>
+          <p class="text-muted mb-0">info&#64;nexuslibros.es</p>
+          <p class="text-muted">Respuesta en 24h</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="contact-info-card text-center">
+          <div class="icon-wrapper mb-3">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
+          <h5 class="fw-bold">Dirección</h5>
+          <p class="text-muted mb-0">Calle Falsa 123</p>
+          <p class="text-muted">Aranjuez, Madrid</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,1 +1,114 @@
-<p>mailing works!</p>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h2 class="mb-4 text-center">Formulario de Contacto</h2>
+      <p class="text-center text-muted mb-5">¿Tienes alguna consulta? Envíanos un mensaje y te responderemos lo antes posible.</p>
+
+      @if (mensajeEnviado) {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>¡Mensaje enviado con éxito!</strong> Nos pondremos en contacto contigo pronto.
+        </div>
+      }
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="needs-validation">
+        <!-- Nombre -->
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre completo</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="nombre" 
+            formControlName="nombre"
+            [class.is-invalid]="nombre?.invalid && nombre?.touched"
+            placeholder="Juan Pérez">
+          @if (nombre?.invalid && nombre?.touched) {
+            <div class="invalid-feedback">
+              @if (nombre?.errors?.['required']) {
+                El nombre es obligatorio.
+              }
+              @if (nombre?.errors?.['minlength']) {
+                El nombre debe tener al menos 3 caracteres.
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <input 
+            type="email" 
+            class="form-control" 
+            id="email" 
+            formControlName="email"
+            [class.is-invalid]="email?.invalid && email?.touched"
+            placeholder="ejemplo@correo.com">
+          @if (email?.invalid && email?.touched) {
+            <div class="invalid-feedback">
+              @if (email?.errors?.['required']) {
+                El correo es obligatorio.
+              }
+              @if (email?.errors?.['email']) {
+                Ingresa un correo válido.
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Asunto -->
+        <div class="mb-3">
+          <label for="asunto" class="form-label">Asunto</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="asunto" 
+            formControlName="asunto"
+            [class.is-invalid]="asunto?.invalid && asunto?.touched"
+            placeholder="Consulta sobre productos">
+          @if (asunto?.invalid && asunto?.touched) {
+            <div class="invalid-feedback">
+              @if (asunto?.errors?.['required']) {
+                El asunto es obligatorio.
+              }
+              @if (asunto?.errors?.['minlength']) {
+                El asunto debe tener al menos 5 caracteres.
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Mensaje -->
+        <div class="mb-3">
+          <label for="mensaje" class="form-label">Mensaje</label>
+          <textarea 
+            class="form-control" 
+            id="mensaje" 
+            rows="5" 
+            formControlName="mensaje"
+            [class.is-invalid]="mensaje?.invalid && mensaje?.touched"
+            placeholder="Escribe tu mensaje aquí..."></textarea>
+          @if (mensaje?.invalid && mensaje?.touched) {
+            <div class="invalid-feedback">
+              @if (mensaje?.errors?.['required']) {
+                El mensaje es obligatorio.
+              }
+              @if (mensaje?.errors?.['minlength']) {
+                El mensaje debe tener al menos 10 caracteres.
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Botón -->
+        <div class="d-grid">
+          <button 
+            type="submit" 
+            class="btn btn-primary btn-lg"
+            [disabled]="contactForm.invalid">
+            Enviar Solicitud
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

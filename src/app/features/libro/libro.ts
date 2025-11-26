@@ -10,12 +10,12 @@ import {List} from '../../shared/list/list';
   styleUrl: './libro.css'
 })
 export class Libro {
-  libro = new LibroM(0,'','', 0,'','','',2025,0);
+  libro = new LibroM(0,'','', 0,'','','',2025);
   submitted = false;
   textoEtiqueta: string = 'una categoría';
   textoCardLibro: string ='Libro Card';
   itemsDisponibles: string[] = ['Ficción', 'Ciencia', 'Historia', 'Novela', 'Programación']; // Tus categorías disponibles
-  booke= new LibroM(0,'','', 0,'','','',0,0);
+  booke= new LibroM(0,'','', 0,'','','',0);
   @ViewChild('libroForm') libroForm!: NgForm; // Para resetear el formulario
 
   enviarLibro(libroA:NgForm ){
@@ -37,8 +37,7 @@ export class Libro {
       imagen: '',
       url:'',
       categoria: this.itemsDisponibles.length > 0 ? this.itemsDisponibles[0] : '',
-      anio: 0,
-      precio: 0
+      anio: 0
     };
     this.libroForm.resetForm(this.libro);
   }

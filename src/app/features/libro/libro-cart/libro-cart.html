@@ -1,0 +1,65 @@
+<section class="cart-header text-center py-4 bg-light rounded shadow-sm mb-4">
+  <h2 class="text-primary fw-bold">Tu Carrito de Compras en Nexus</h2>
+  <p class="lead">Revisa los libros que has seleccionado y procede con tu pedido.</p>
+</section>
+
+<div class="row">
+  <div class="col-lg-8">
+    <div class="card shadow-sm mb-4 border-0">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Libros en tu Carrito ({{ librosSeleccionados.length }})</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        @if (librosSeleccionados.length === 0) {
+        <li class="list-group-item d-flex align-items-center">
+          <p class="text-muted mb-0">Tu carrito está vacío. ¡Explora nuestro catálogo y añade algunos libros!</p>
+        </li>
+          <button class="btn btn-primary btn-sm"(click)="seguirComprando()">Volver al Catálogo</button>
+        }
+        @for ( item of librosSeleccionados;track item.id) {
+          <li class="list-group-item d-flex align-items-center py-3">
+            <img [src]="item.imagen || 'https://via.placeholder.com/70x90?text=No+Image'" alt="Portada del libro" class="img-thumbnail me-3" style="width: 70px; height: 90px; object-fit: cover;">
+            <div class="flex-grow-1">
+              <h6 class="mb-1 text-primary">{{ item.nombre }}</h6>
+              <p class="mb-1 small text-muted">Por {{ item.autor }}</p>
+              <p class="mb-0 fw-bold text-success">{{ item.precio | currency:'USD':'symbol' }}</p>
+            </div>
+            <button class="btn btn-sm btn-outline-danger ms-3" (click)="removeFromCart(item)">
+              <i class="bi bi-trash"></i> Eliminar
+            </button>
+          </li>
+        }
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card shadow-sm border-0">
+      <div class="card-header bg-success text-white">
+        <h5 class="mb-0">Resumen del Pedido</h5>
+      </div>
+      <div class="card-body">
+        <p class="d-flex justify-content-between align-items-center">
+          <span>Subtotal ({{ librosSeleccionados.length }} artículos):</span>
+          <span class="fw-bold">{{ calcularTotal()| currency:'USD':'symbol' }}</span>
+        </p>
+        <p class="d-flex justify-content-between align-items-center text-muted small">
+          <span>Envío:</span>
+          <span>Gratis</span>
+        </p>
+        <hr>
+        <h4 class="d-flex justify-content-between align-items-center text-primary">
+          <span>Total:</span>
+          <span class="fw-bold">{{ calcularTotal() | currency:'USD':'symbol' }}</span>
+        </h4>
+        <div class="d-grid gap-2 mt-4">
+          <button class="btn btn-primary btn-lg" (click)="checkout()" [disabled]="librosSeleccionados.length === 0"> <!-- ¡Llamada al nuevo método! -->
+            Proceder al Pago
+          </button>
+          <button class="btn btn-outline-secondary" (click)="seguirComprando()">Seguir Comprando</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

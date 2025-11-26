@@ -1,0 +1,64 @@
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #6B4423 0%, #3E2723 100%);
+  padding: 100px 0;
+  margin-bottom: 0;
+}
+
+.intro-section img {
+  object-fit: cover;
+  height: 400px;
+}
+
+.servicios-section {
+  margin: 0 -15px;
+  padding: 60px 15px !important;
+}
+
+.servicio-icono {
+  font-size: 3rem;
+}
+
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.info-section ul {
+  line-height: 2;
+}
+
+/* Listas con iconos */
+.horarios-list,
+.caracteristicas-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.horarios-list li,
+.caracteristicas-list li {
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+}
+
+.caracteristicas-list li i {
+  font-size: 1.2rem;
+}
+
+.cta-section {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  margin: 40px 0;
+}
+
+.btn-lg {
+  padding: 12px 30px;
+}

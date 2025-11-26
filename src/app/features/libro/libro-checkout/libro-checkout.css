@@ -1,0 +1,10 @@
+.checkout-header {
+  background-image: linear-gradient(rgba(40, 167, 69, 0.8), rgba(40, 167, 69, 0.8)), url('https://www.canva.com/design/DAG4K5bMySM/HDIg77dFLQLdK_ki2gvjJQ/edit?utm_content=DAG4K5bMySM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton'); /* Opcional: una imagen de fondo para el encabezado de confirmación */
+  background-size: cover;
+  background-position: center;
+}
+.book-cover-small {
+  width: 50px;
+  height: 70px;
+  object-fit: cover;
+}

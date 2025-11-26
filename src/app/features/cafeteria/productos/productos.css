@@ -1,0 +1,68 @@
+.productos-container {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+.header-section {
+  background: white;
+  margin: -20px -15px 20px -15px;
+  padding: 60px 15px !important;
+}
+
+.filtros-section {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.btn-filtro {
+  padding: 8px 20px;
+  border: 2px solid #dee2e6;
+  background-color: white;
+  color: #495057;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.btn-filtro:hover {
+  background-color: #f8f9fa;
+  border-color: #0d6efd;
+}
+
+.btn-filtro.active {
+  background-color: #0d6efd;
+  color: white;
+  border-color: #0d6efd;
+}
+
+.producto-card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+}
+
+.producto-imagen {
+  height: 250px;
+  object-fit: cover;
+}
+
+.precio {
+  font-size: 1.5rem;
+  color: #0d6efd;
+}
+
+.cta-section .bg-light {
+  border: 2px dashed #dee2e6;
+}
