@@ -6,12 +6,15 @@
         <div class="card-body">
           <h5 class="card-title">{{ item.nombre }}</h5>
           <a href="#" class="btn btn-primary">Ver más</a>
-          <a class="btn btn-primary" routerLink ="/cart" (click)="enviarAgregarLibroCarrito(item)">Comprar</a>
+          <a class="btn btn-primary" routerLink="/cart" (click)="addToCart(item)">Agregar al Carrito</a>
         </div>
         <div class="card-footer">
           <small class="text-muted">{{ item.anio }}</small>
         </div>
       </div>
     }
+  </div>
+  <div class="cart-summary">
+    <a [routerLink]="['/cart']" routerLinkActive="active-link" class="view-cart-link">Ver Carrito</a>
   </div>
 </div>

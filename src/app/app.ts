@@ -1,13 +1,11 @@
-import { Component, signal } from '@angular/core';
+import {Component, signal, ViewChild} from '@angular/core';
 import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {LibroM} from './features/libro/libro.model';
-import {LibroCart} from './features/libro/libro-cart/libro-cart';
-import {CardList} from './shared/card-list/card-list';
-import {LibroCheckout} from './features/libro/libro-checkout/libro-checkout';
+import {FormsModule, NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, LibroCart, CardList, LibroCheckout],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, FormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -29,28 +27,11 @@ export class App {
     }
   }
 
-  removerDelCarrito(book: LibroM){
-    this.cartItems.filter(item => item.id !== book.id);
-    alert('Libro eliminado del carrito.');
-  }
-
-  irAlCheckout(): void {
-    if (this.cartItems.length > 0) {
-      this.currentView = 'checkout';
-      this.router.navigate(['checkout']);
-    } else {
-      alert('Tu carrito está vacío. ¡Añade libros antes de proceder!');
-    }
-  }
   // Este método será llamado por el componente Checkout (a través de Checkout.eERegresarInicio)
   regresarInicio(): void {
     this.cartItems = [];
-    this.currentView = 'landing';
     this.router.navigate(['']);
     alert('¡Gracias por tu compra! Tu pedido ha sido confirmado.');
   }
-  irSeguirComprando(){
-    this.router.navigate(['cardList']);
-    alert('¡Gracias por seguir comprando!.');
-  }
+
 }

@@ -9,7 +9,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" >
           <a class="nav-link" routerLink="/cart" routerLinkActive="active"
              (click)="currentView = 'cart'">Carrito <span class="badge bg-primary rounded-pill">{{ cartItems.length }}</span></a>
         </li>
@@ -30,7 +30,7 @@
   <div class="container text-center mt-4">
     <div class="row">
       <div class="col">
-        <router-outlet>
+        <router-outlet >
 
         </router-outlet>
 
