@@ -1,97 +1,20 @@
-<div class="card-list-container">
-  <div class="container my-4">
-    <!-- Header y búsqueda -->
-    <div class="search-section mb-4">
-      <h2 class="text-center mb-4 text-primary fw-bold">Catálogo de Libros</h2>
-      
-      <div class="row justify-content-center mb-4">
-        <div class="col-lg-8">
-          <div class="search-box">
-            <div class="input-group">
-              <span class="input-group-text bg-white">
-                <i class="bi bi-search"></i>
-              </span>
-              <input 
-                type="text" 
-                class="form-control" 
-                placeholder="Buscar por título, autor o categoría..."
-                [(ngModel)]="terminoBusqueda"
-                (input)="buscarLibros()">
-              @if (terminoBusqueda) {
-                <button 
-                  class="btn btn-outline-secondary" 
-                  type="button"
-                  (click)="limpiarBusqueda()">
-                  <i class="bi bi-x-lg"></i>
-                </button>
-              }
-            </div>
-          </div>
+<div class="container my-4">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    @for (item of libros; track item.id) {
+      <div class="card h-100 shadow-sm">
+        <img [ngSrc]="item.imagen" width="300" height="200" class="card-img-top" [alt]="item.nombre" priority>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.nombre }}</h5>
+          <a href="#" class="btn btn-primary">Ver más</a>
+          <a class="btn btn-primary" routerLink="/cart" (click)="addToCart(item)">Agregar al Carrito</a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">{{ item.anio }}</small>
         </div>
       </div>
-
-      <!-- Filtros por categoría -->
-      <div class="row justify-content-center mb-4">
-        <div class="col-lg-10">
-          <div class="d-flex flex-wrap gap-2 justify-content-center">
-            @for (categoria of categorias; track categoria) {
-              <button 
-                class="btn btn-filter"
-                [class.active]="categoriaSeleccionada === categoria"
-                (click)="categoriaSeleccionada = categoria; buscarLibros()">
-                {{ categoria === 'todas' ? 'Todas las categorías' : categoria }}
-              </button>
-            }
-          </div>
-        </div>
-      </div>
-
-      <!-- Contador de resultados -->
-      <div class="text-center mb-3">
-        <p class="text-muted">
-          Mostrando <strong>{{ librosFiltrados.length }}</strong> de {{ libros.length }} libros
-        </p>
-      </div>
-    </div>
-
-    <!-- Grid de libros -->
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-      @for (item of librosFiltrados; track item.id) {
-        <div class="col">
-          <div class="card h-100 shadow-sm libro-card">
-            <img [ngSrc]="item.imagen" width="200" height="300" class="card-img-top libro-img" [alt]="item.nombre">
-            <div class="card-body d-flex flex-column">
-              <span class="badge bg-secondary mb-2 align-self-start">{{ item.categoria }}</span>
-              <h5 class="card-title">{{ item.nombre }}</h5>
-              <p class="card-text text-muted mb-2">
-                <i class="bi bi-person-fill me-1"></i>{{ item.autor }}
-              </p>
-              <p class="card-text text-muted small mb-auto">
-                <i class="bi bi-star-fill text-warning me-1"></i>
-                {{ item.votos }} votos
-              </p>
-              <div class="mt-3">
-                <a [href]="item.url" target="_blank" class="btn btn-primary w-100">
-                  Ver más <i class="bi bi-box-arrow-up-right ms-1"></i>
-                </a>
-              </div>
-            </div>
-            <div class="card-footer bg-white border-top">
-              <small class="text-muted">
-                <i class="bi bi-calendar-event me-1"></i>Año {{ item.anio }}
-              </small>
-            </div>
-          </div>
-        </div>
-      } @empty {
-        <div class="col-12">
-          <div class="alert alert-info text-center" role="alert">
-            <i class="bi bi-info-circle-fill me-2"></i>
-            No se encontraron libros que coincidan con tu búsqueda.
-            <button class="btn btn-link" (click)="limpiarBusqueda()">Limpiar filtros</button>
-          </div>
-        </div>
-      }
-    </div>
+    }
+  </div>
+  <div class="cart-summary">
+    <a [routerLink]="['/cart']" routerLinkActive="active-link" class="view-cart-link">Ver Carrito</a>
   </div>
 </div>

@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import { CommonModule } from '@angular/common';
+import {RouterLink, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-contact',
   imports: [
-    RouterOutlet, RouterLink, RouterLinkActive, CommonModule
+    RouterOutlet, RouterLink
   ],
   templateUrl: './contact.html',
   styleUrl: './contact.css'

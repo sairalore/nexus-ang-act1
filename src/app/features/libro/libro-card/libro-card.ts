@@ -10,7 +10,7 @@ import {RouterLink} from '@angular/router';
 })
 export class LibroCard {
   @Input() titulo: string ='';
-  @Input() book: LibroM = new LibroM(0,'','',0,'','','',0);
+  @Input() book: LibroM = new LibroM(0,'','',0,'','','',0,0);
   @Input() submittedH = false;
   @Output() eventEmitLibro = new EventEmitter<LibroM>();
 

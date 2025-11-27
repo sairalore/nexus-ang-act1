@@ -7,9 +7,9 @@ import {Libro} from './features/libro/libro';
 import {Mailing} from './features/contact/mailing/mailing';
 import {Mapping} from './features/contact/mapping/mapping';
 import {CardList} from './shared/card-list/card-list';
-import {CafeteriaLanding} from './features/cafeteria/landing/landing';
-import {CafeteriaProductos} from './features/cafeteria/productos/productos';
-import {CafeteriaCheckout} from './features/cafeteria/checkout/checkout';
+import {LibroCheckout} from './features/libro/libro-checkout/libro-checkout';
+import {LibroCart} from './features/libro/libro-cart/libro-cart';
+import {LibroDetalle} from './features/libro/libro-detalle/libro-detalle';
 
 export const routes: Routes = [
   {path: '', component: Home},
@@ -20,9 +20,9 @@ export const routes: Routes = [
     {path: 'mapping', component: Mapping},
   ]},
   {path: 'libroNexus', component: Libro},
+  {path: 'cardList/:id', component: LibroCart},
   {path: 'cardList', component: CardList},
-  {path: 'cafeteria', component: CafeteriaLanding},
-  {path: 'cafeteria/productos', component: CafeteriaProductos},
-  {path: 'cafeteria/checkout', component: CafeteriaCheckout},
-  {path: '**', component: NotFound},
+  {path: 'checkout', component: LibroCheckout},
+  {path: 'cart', component: LibroCart},
+  {path: '**', redirectTo: 'about'},
 ];
